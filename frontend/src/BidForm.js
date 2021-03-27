@@ -1,12 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Button, LinearProgress, Box } from '@material-ui/core';
 import { TextField, CheckboxWithLabel } from 'formik-material-ui';
 import * as Yup from 'yup';
 import { makeStyles } from '@material-ui/core/styles';
-
-import { getAuctionList } from '../actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BidForm({ highest_bid: highestBid, onBid }) {
   if (!highestBid) return null;
+
+  const bidding = useSelector((state) => state.bidding);
 
   const schema = Yup.object().shape({
     bid: Yup.number()
@@ -50,11 +50,15 @@ export default function BidForm({ highest_bid: highestBid, onBid }) {
       }}
       validationSchema={schema}
       onSubmit={(values, { setSubmitting }) => {
-        onBid(values);
+        const maxBid = values.activateAutoBid && values.max_bid || undefined;
+        onBid({
+          ...values,
+          max_bid: maxBid
+        });
         setSubmitting(false);
       }}
     >
-      {({ submitForm, isSubmitting, values }) => (
+      {({ submitForm, values }) => (
         <Form className={classes.root}>
           <Box>
             <Field
@@ -84,19 +88,21 @@ export default function BidForm({ highest_bid: highestBid, onBid }) {
               />
             </Box>
           )}
-          {isSubmitting && (
+          {bidding && (
             <Box marginBottom="10px">
               <LinearProgress />
             </Box>
           )}
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={isSubmitting}
-            onClick={submitForm}
-          >
-            Submit
-          </Button>
+          <Box marginBottom="10px">
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={bidding}
+              onClick={submitForm}
+            >
+              Submit
+            </Button>
+          </Box>
         </Form>
       )}
     </Formik>

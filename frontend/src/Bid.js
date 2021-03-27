@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: "10px 0px",
     width: "100%",
-    height: '100vh',
+    height: '110vh',
     [theme.breakpoints.down('md')]: {
       height: '100%'
     }
