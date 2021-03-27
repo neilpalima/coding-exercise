@@ -21,32 +21,32 @@ const products = [
 const auctions = [
   {
     product_id: 1,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(30, 'minutes'),
     highest_bid: 10
   },
   {
     product_id: 2,
-    bid_end: moment().add(1, 'hours'),
+    bid_end: moment().add(30, 'minutes'),
     highest_bid: 5
   },
   {
     product_id: 3,
-    bid_end: moment().add(1, 'hours'),
+    bid_end: moment().add(2, 'hours'),
     highest_bid: 20
   },
   {
     product_id: 1,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(3, 'hours'),
     highest_bid: 1
   },
   {
     product_id: 2,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(4, 'hours'),
     highest_bid: 2
   },
   {
     product_id: 3,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(5, 'hours'),
     highest_bid: 3
   },
   {
@@ -56,12 +56,12 @@ const auctions = [
   },
   {
     product_id: 2,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(2, 'days'),
     highest_bid: 8
   },
   {
     product_id: 3,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(3, 'days'),
     highest_bid: 6
   },
   {
@@ -71,12 +71,27 @@ const auctions = [
   },
   {
     product_id: 2,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(2, 'days'),
     highest_bid: 5
   },
   {
     product_id: 3,
-    bid_end: moment().add(1, 'days'),
+    bid_end: moment().add(3, 'days'),
+    highest_bid: 5
+  },
+  {
+    product_id: 1,
+    bid_end: moment().add(10, 'days'),
+    highest_bid: 5
+  },
+  {
+    product_id: 2,
+    bid_end: moment().add(10, 'days'),
+    highest_bid: 5
+  },
+  {
+    product_id: 3,
+    bid_end: moment().add(10, 'days'),
     highest_bid: 5
   }
 ];
